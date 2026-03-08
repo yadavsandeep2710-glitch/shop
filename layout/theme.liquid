@@ -372,8 +372,8 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {%- if settings.cart_type == 'drawer' -%}
-      <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+    {%- if template.name == 'product' -%}
+      {%- render 'sticky-atc' -%}
     {%- endif -%}
   </body>
 </html>

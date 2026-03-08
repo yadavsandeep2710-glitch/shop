@@ -1,0 +1,103 @@
+{%- style -%}
+  .trust-section {
+    padding: 4rem 0;
+    {% if section.settings.show_line %}border-bottom: 1px solid rgba(var(--color-foreground), 0.08);{% endif %}
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .trust-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  .trust-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    transition: var(--transition-premium);
+  }
+
+  .trust-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .trust-icon {
+    font-size: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+    background: var(--glass-bg);
+    border-radius: 50%;
+    color: var(--color-brand-accent);
+    border: 1px solid var(--glass-border);
+  }
+
+  .trust-title {
+    font-family: var(--font-heading-family);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+  }
+{%- endstyle -%}
+
+<section class="trust-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">🚚</div>
+        <h3 class="trust-title">Fast Shipping Across India</h3>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">💰</div>
+        <h3 class="trust-title">Cash on Delivery Available</h3>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <h3 class="trust-title">Secure Payments</h3>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⭐</div>
+        <h3 class="trust-title">1000+ Happy Customers</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "default": true,
+      "label": "Show separator line"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+{%- style -%}
+  .about-brand {
+    padding: 8rem 0;
+    text-align: center;
+    background: var(--color-brand-primary);
+    color: var(--color-brand-secondary);
+  }
+
+  .about-content {
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .about-title {
+    color: var(--color-brand-accent);
+    margin-bottom: 2rem;
+  }
+
+  .about-text {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+{%- endstyle -%}
+
+<section class="about-brand">
+  <div class="page-width">
+    <div class="about-content">
+      <h2 class="h1 about-title">About AIBrainX Store</h2>
+      <p class="about-text">
+        AIBrainX Store is dedicated to bringing India's most viral and useful products in one place. 
+        We test trending products so our customers get innovative items at affordable prices. 
+        Our mission is to simplify your life with curated solutions that actually work.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Brand",
+  "settings": [],
+  "presets": [
+    {
+      "name": "About Brand"
+    }
+  ]
+}
+{% endschema %}

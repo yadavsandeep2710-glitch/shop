@@ -1,0 +1,150 @@
+{%- style -%}
+  .benefit-section {
+    padding: 6rem 0;
+  }
+
+  .benefit-title {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .benefit-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .benefit-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 2rem;
+    padding: 3rem;
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition-premium);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--premium-shadow);
+  }
+
+  .benefit-tag {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag-problem {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff4444;
+  }
+
+  .tag-solution {
+    background: rgba(0, 255, 0, 0.1);
+    color: #00c851;
+  }
+
+  .benefit-item {
+    margin-bottom: 2rem;
+  }
+
+  .benefit-text {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .benefit-divider {
+    height: 1px;
+    background: var(--glass-border);
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .benefit-divider::after {
+    content: '→';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-brand-primary);
+    padding: 0 1rem;
+    font-size: 2rem;
+  }
+{%- endstyle -%}
+
+<section class="benefit-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="benefit-title">
+      <h2 class="h1">Products That Make Life Easier</h2>
+    </div>
+    
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-item">
+          <span class="benefit-tag tag-problem">Messy Kitchen</span>
+          <p class="benefit-text">Struggling with clutter and slow prep time?</p>
+        </div>
+        <div class="benefit-divider"></div>
+        <div class="benefit-item">
+          <span class="benefit-tag tag-solution">Smart Kitchen Tools</span>
+          <p class="benefit-text">Chop, slice, and organize in seconds.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-item">
+          <span class="benefit-tag tag-problem">Boring Gifts</span>
+          <p class="benefit-text">Can't find something unique for loved ones?</p>
+        </div>
+        <div class="benefit-divider"></div>
+        <div class="benefit-item">
+          <span class="benefit-tag tag-solution">Unique Viral Gifts</span>
+          <p class="benefit-text">Gifts that actually go viral on social media.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-item">
+          <span class="benefit-tag tag-problem">Expensive Gadgets</span>
+          <p class="benefit-text">High-tech gear costing a fortune?</p>
+        </div>
+        <div class="benefit-divider"></div>
+        <div class="benefit-item">
+          <span class="benefit-tag tag-solution">Affordable Alternatives</span>
+          <p class="benefit-text">Get high-tech innovation at 1/10th the price.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Problem Solution",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Problem Solution"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,141 @@
+{%- style -%}
+  .faq-section {
+    padding: 6rem 0;
+  }
+
+  .faq-title {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .faq-container {
+    max-width: 70rem;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 1rem;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: var(--font-heading-family);
+    transition: color 0.3s ease;
+  }
+
+  .faq-question:hover {
+    color: var(--color-brand-accent);
+  }
+
+  .faq-icon {
+    font-size: 2.4rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-bottom: 0;
+    opacity: 0.7;
+    font-size: 1.6rem;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 20rem;
+    padding-bottom: 2rem;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+{%- endstyle -%}
+
+<section class="faq-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="faq-title">
+      <h2 class="h1">Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How long does shipping take?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-answer">
+          Shipping usually takes 3-7 business days across India, depending on your location.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Do you offer COD?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-answer">
+          Yes! We offer Cash on Delivery (COD) for almost all pin codes in India.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What if the product is damaged?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-answer">
+          We offer a 7-day easy return and replacement policy if you receive a damaged or defective product.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How can I track my order?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-answer">
+          Once your order is shipped, you will receive a tracking link via SMS or email.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentElement;
+      item.classList.toggle('active');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Custom",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,102 @@
+{%- style -%}
+  .sticky-atc {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-brand-primary);
+    padding: 1.5rem 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .sticky-atc.visible {
+    transform: translateY(0);
+  }
+
+  .sticky-atc-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .sticky-atc-img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  .sticky-atc-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-brand-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sticky-atc-price {
+    font-size: 1.4rem;
+    color: var(--color-brand-accent);
+    font-weight: 700;
+  }
+
+  .sticky-atc-button {
+    background: var(--color-brand-cta);
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sticky-atc {
+      display: none; /* Only show on mobile */
+    }
+  }
+{%- endstyle -%}
+
+<div id="sticky-atc" class="sticky-atc">
+  <div class="sticky-atc-info">
+    {% if product.featured_media %}
+      <img src="{{ product.featured_media | image_url: width: 100 }}" class="sticky-atc-img" alt="{{ product.title }}">
+    {% endif %}
+    <div>
+      <div class="sticky-atc-title">{{ product.title }}</div>
+      <div class="sticky-atc-price">{{ product.price | money_with_currency }}</div>
+    </div>
+  </div>
+  <button type="submit" form="product-form-{{ section.id }}" class="sticky-atc-button">
+    Buy Now
+  </button>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const atc = document.getElementById('sticky-atc');
+    const originalButton = document.querySelector('[name="add"]');
+    if (!originalButton) return;
+
+    const buttonRect = originalButton.getBoundingClientRect();
+    if (buttonRect.bottom < 0) {
+      atc.classList.add('visible');
+    } else {
+      atc.classList.remove('visible');
+    }
+  });
+</script>
