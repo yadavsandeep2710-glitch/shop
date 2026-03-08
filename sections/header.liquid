@@ -73,26 +73,62 @@
 </style>
 
 {%- style -%}
+  .header-wrapper {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: calc(100% - 2rem);
+    z-index: 100;
+    background: rgba(var(--color-background), 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(var(--color-foreground), 0.1);
+    border-radius: 2rem;
+    margin: 0 auto;
+    transition: var(--transition-premium);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .scrolled-past-header .header-wrapper {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    background: rgba(var(--color-background), 0.8);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.05);
+  }
+
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
+    padding: 1.5rem 3rem;
   }
 
   .section-header {
-    position: sticky; /* This is for fixing a Safari z-index issue. PR #2147 */
-    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+    height: 8rem; /* Maintain space so content doesn't jump */
   }
 
-  @media screen and (min-width: 750px) {
-    .section-header {
-      margin-bottom: {{ section.settings.margin_bottom }}px;
-    }
+  /* Active Nav Link Indicator */
+  .list-menu__item--link {
+    position: relative;
+    transition: color 0.3s ease;
   }
 
-  @media screen and (min-width: 990px) {
-    .header {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
+  .list-menu__item--link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-ai);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .list-menu__item--link:hover::after,
+  .list-menu__item--link.header__active-menu-item::after {
+    width: 60%;
   }
 {%- endstyle -%}
 
