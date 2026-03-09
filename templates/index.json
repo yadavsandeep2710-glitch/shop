@@ -73,10 +73,6 @@
       "settings": {
         "color_scheme": "scheme-1"
       }
-    },
-    "pagefly-home": {
-      "type": "pagefly-home",
-      "settings": {}
     }
   },
   "order": [
@@ -85,7 +81,6 @@
     "why_choose_us",
     "problem_solution",
     "about_brand",
-    "faq_custom",
-    "pagefly-home"
+    "faq_custom"
   ]
 }
